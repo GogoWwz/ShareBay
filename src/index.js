@@ -8,6 +8,7 @@ const app = dva();
 // app.use({});
 
 // 3. Model
+require('./models').default.forEach(key => app.model(key.default))
 // app.model(require('./models/example').default);
 
 // 4. Router
