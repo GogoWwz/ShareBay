@@ -1,17 +1,18 @@
 import fetch from 'dva/fetch';
+// import { stringify } from 'qs';
 
 function parseJSON(response) {
-  return response.json();
+	return response.json();
 }
 
 function checkStatus(response) {
-  if (response.status >= 200 && response.status < 300) {
-    return response;
-  }
+	if (response.status >= 200 && response.status < 300) {
+		return response;
+	}
 
-  const error = new Error(response.statusText);
-  error.response = response;
-  throw error;
+	const error = new Error(response.statusText);
+	error.response = response;
+	throw error;
 }
 
 /**
@@ -21,10 +22,25 @@ function checkStatus(response) {
  * @param  {object} [options] The options we want to pass to "fetch"
  * @return {object}           An object containing either "data" or "err"
  */
-export default function request(url, options) {
-  return fetch(url, options)
-    .then(checkStatus)
-    .then(parseJSON)
-    .then(data => ({ data }))
-    .catch(err => ({ err }));
+export default function request(url, params, method) {
+	params = params || {}
+	// 基本选项配置
+	const defaultOptions = {
+		// ...
+	}
+	// 新增选项配置
+	const options = { method: method || 'GET' }
+	if(method === 'POST') {
+		options.headers = {
+			Accept: 'application/json',
+			'Content-Type': 'application/json'
+ 		}
+		options.body = JSON.stringify(params)
+	}
+	const newOptions = { ...defaultOptions, ...options }
+	return fetch(url, newOptions)
+		.then(checkStatus)
+		.then(parseJSON)
+		.then(data => data )
+		.catch(err => ({ err }));
 }
