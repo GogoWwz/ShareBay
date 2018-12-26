@@ -1,4 +1,5 @@
 import { login } from '../services/login'
+import { routerRedux } from 'dva/router'
 import { message } from 'antd'
 
 export default {
@@ -9,9 +10,9 @@ export default {
     effects: {
         * login({ payload }, { call, put }) {
             const res = yield call(login, payload)
-            console.log(res)
             if(res.code === 8888) {
                 message.success(res.message)
+                yield put(routerRedux.push('/home'))
             }
         }
     },
