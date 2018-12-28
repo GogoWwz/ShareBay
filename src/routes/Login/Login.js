@@ -16,7 +16,6 @@ class Login extends React.Component {
         const { dispatch } = this.props
         this.props.form.validateFields((err, values) => {
             if (!err) {
-                console.log('Received values of form: ', values);
                 dispatch({
                     type: 'login/login',
                     payload: values 
@@ -29,7 +28,7 @@ class Login extends React.Component {
         return (
             <Form onSubmit={this.handleSubmit} style={{ width: '100%' }}>
                 <FormItem>
-                    {getFieldDecorator('userName', {
+                    {getFieldDecorator('username', {
                         rules: [{ required: true, message: 'Please input your username!' }],
                     })(
                         <Input prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="Username" />

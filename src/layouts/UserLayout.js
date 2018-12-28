@@ -4,7 +4,7 @@ import { Route, Redirect, Switch } from 'dva/router';
 import { Row, Col } from 'antd';
 import styles from './layouts.less';
 
-import Login from '../routes/Login/Login'
+import Login from '@/routes/Login/Login'
 
 @connect()
 class UserLayout extends React.Component {

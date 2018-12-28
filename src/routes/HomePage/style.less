@@ -1,0 +1,24 @@
+@import "~@/assets/less/mixins.less";
+
+.moneyArea {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    .moneyCount {
+       .mx-sC(32px; #FF4500);
+       margin-top: 20%;
+       span {
+           font-size: 72px;
+           font-weight: bold;
+       }
+    }
+    :global {
+        .ant-card {
+            width: 80%;
+            height: 80%;
+        }
+    }
+}

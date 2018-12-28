@@ -1,6 +1,6 @@
 import fetch from 'dva/fetch';
 import { message } from 'antd'
-// import { stringify } from 'qs';
+import { stringify } from 'qs';
 
 function parseJSON(response) {
 	return response.json();
@@ -27,16 +27,18 @@ export default function request(url, params, method) {
 	params = params || {}
 	// 基本选项配置
 	const defaultOptions = {
-		// ...
+		headers: {
+			Accept: 'application/json',
+			'Content-Type': 'application/json'
+ 		}
 	}
 	// 新增选项配置
 	const options = { method: method || 'GET' }
 	if(method === 'POST') {
-		options.headers = {
-			Accept: 'application/json',
-			'Content-Type': 'application/json'
- 		}
 		options.body = JSON.stringify(params)
+	}
+	if(method === 'GET' && params) {
+		url = url + '?' + stringify(params, { arrayFormat: 'repeat' })
 	}
 	const newOptions = { ...defaultOptions, ...options }
 	return fetch(url, newOptions)
