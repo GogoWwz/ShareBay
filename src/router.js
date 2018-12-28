@@ -1,15 +1,17 @@
 import React from 'react';
-import { Router, Route, Switch, Redirect } from 'dva/router';
-import Login from './routes/Login/Login'
-import Home from './routes/Home/Home'
+import { Router, Switch, Redirect, Route } from 'dva/router';
+import UserLayout from './layouts/UserLayout';
+import BasicLayout from './layouts/BasicLayout';
+
+// import routerData from './common/menu'
 
 function RouterConfig({ history }) {
 	return (
 		<Router history={history}>
 			<Switch>
-				<Redirect exact from="/" to="/login" />
-				<Route path="/login" exact component={Login} />
-				<Route path="/home" exact component={Home} />
+				<Redirect exact from="/" to="/user" />
+				<Route path="/user" render={props => <UserLayout {...props} />} />
+				<Route path="/home" render={props => <BasicLayout {...props} />} />
 			</Switch>
 		</Router>
 	);
