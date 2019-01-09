@@ -1,4 +1,5 @@
-import { getBalance } from '../services/homePage'
+import { message } from 'antd'
+import { getBalance, addBalance } from '../services/homePage'
 
 export default {
     namespace: 'homePage',
@@ -7,13 +8,20 @@ export default {
         balance: 0
     },
     effects: {
-        * getBalance({ payload }, { call, put }) {
-            console.log("1111")
+        * getGroup({}, { call, put }) {
             const res = yield call(getBalance, { username: 'wuweizhen' })
             yield put({
                 type: 'changeData',
                 payload: { balance: res.data.balance }
             })
+        },
+        * addBalance({ payload, cb }, { call, put }) {
+            const res = yield call(addBalance, payload)
+            yield put({
+                type: 'getGroup'
+            })
+            message.success(res.message)
+            cb && cb()
         }
     },
     reducers: {
