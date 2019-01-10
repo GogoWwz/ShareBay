@@ -1,5 +1,5 @@
 import React from 'react'
-import { Form, Input } from 'antd'
+import { Form, InputNumber } from 'antd'
 import styles from './style.less'
 
 const FormItem = Form.Item
@@ -24,11 +24,11 @@ class BalanceForm extends React.Component {
                     {
                         getFieldDecorator('balance', {
                             rules: [
-                                { required: true, message: "请输入金额" }
+                                { required: true, message: "请输入金额" },
                             ],
                             validateTrigger: 'onBlur'
                         })(
-                            <Input placeholder="请输入充值余额" />
+                            <InputNumber placeholder="请输入" precision={2} />
                         )
                     }
                 </FormItem>

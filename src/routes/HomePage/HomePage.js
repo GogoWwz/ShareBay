@@ -21,7 +21,8 @@ class HomePage extends React.Component {
     }
     getBalance = () => {
         this.props.dispatch({
-            type: 'homePage/getGroup'
+            type: 'homePage/getBalance',
+            payload: { userId: "5c36ba802f534c1bf805a269" }
         })
     }
     addBalance = () => {
@@ -32,8 +33,8 @@ class HomePage extends React.Component {
                 dispatch({
                     type: 'homePage/addBalance',
                     payload: { 
-                        groupId: '5c2c72e0bca3f3182825713b',
-                        username: 'wuweizhen',
+                        groupId: '5c36ba802f534c1bf805a26a',
+                        userId: '5c36ba802f534c1bf805a269',
                         balance: parseFloat(values.balance)
                     },
                     cb: this.hideModal 

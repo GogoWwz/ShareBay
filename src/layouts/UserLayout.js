@@ -5,6 +5,7 @@ import { Row, Col } from 'antd';
 import styles from './layouts.less';
 
 import Login from '@/routes/Login/Login'
+import Register from '@/routes/Register/Register'
 
 @connect()
 class UserLayout extends React.Component {
@@ -15,6 +16,7 @@ class UserLayout extends React.Component {
                     <Switch>
                         <Redirect exact from="/user" to="/user/login" />
                         <Route exact path="/user/login" component={Login} />
+                        <Route exact path="/user/register" component={Register} />
                     </Switch>
                 </Col>
             </Row>
