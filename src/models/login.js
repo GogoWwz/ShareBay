@@ -1,6 +1,6 @@
 import { login } from '@/services/login'
+import isSuccess from '@/utils/isSuccess'
 import { routerRedux } from 'dva/router'
-import { message } from 'antd'
 
 export default {
     namespace: 'login',
@@ -10,8 +10,9 @@ export default {
     effects: {
         * login({ payload }, { call, put }) {
             const res = yield call(login, payload)
-            message.success(res.message)
-            yield put(routerRedux.push('/home'))
+            if(isSuccess(res)) {
+                yield put(routerRedux.push('/home'))
+            }
         }
     },
     reducers: {}

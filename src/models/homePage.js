@@ -1,5 +1,5 @@
-import { message } from 'antd'
-import { getBalance, addBalance } from '../services/homePage'
+import { getBalance, addBalance } from '@/services/homePage'
+import isSuccess from '@/utils/isSuccess'
 
 export default {
     namespace: 'homePage',
@@ -10,19 +10,22 @@ export default {
     effects: {
         * getBalance({ payload }, { call, put }) {
             const res = yield call(getBalance, payload)
-            yield put({
-                type: 'changeData',
-                payload: { balance: res.data.balance }
-            })
+            if(isSuccess(res)) {
+                yield put({
+                    type: 'changeData',
+                    payload: { balance: res.data.balance }
+                })
+            }
         },
         * addBalance({ payload, cb }, { call, put }) {
             const res = yield call(addBalance, payload)
-            yield put({
-                type: 'getBalance',
-                payload: { userId: "5c36ba802f534c1bf805a269" }
-            })
-            message.success(res.message)
-            cb && cb()
+            if(isSuccess(res)) {
+                yield put({
+                    type: 'getBalance',
+                    payload: { userId: "5c36e11ac76d6e15987e213b" }
+                })
+                cb && cb()
+            }
         }
     },
     reducers: {

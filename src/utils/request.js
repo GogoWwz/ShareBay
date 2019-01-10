@@ -1,5 +1,4 @@
 import fetch from 'dva/fetch';
-import { message } from 'antd'
 import { stringify } from 'qs';
 
 function parseJSON(response) {
@@ -45,9 +44,6 @@ export default function request(url, params, method) {
 		.then(checkStatus)
 		.then(parseJSON)
 		.then(data => {
-			if(data.code !== 8888 ) {
-				return message.warning(data.message)
-			}
 			return data
 		})
 		.catch(err => ({ err }));

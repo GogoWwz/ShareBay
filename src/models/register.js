@@ -1,6 +1,6 @@
 import { register } from '@/services/register'
+import isSuccess from '@/utils/isSuccess'
 import { routerRedux } from 'dva/router'
-import { message } from 'antd'
 
 export default {
     namespace: 'register',
@@ -10,8 +10,9 @@ export default {
     effects: {
         * register({ payload }, { call, put }) {
             const res = yield call(register, payload)
-            message.success(res.message)
-            yield put(routerRedux.push("/user/login"))
+            if(isSuccess(res)) {
+                yield put(routerRedux.push("/user/login"))
+            }
         }
     },
     reducers: {}
