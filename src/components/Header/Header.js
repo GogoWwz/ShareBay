@@ -13,6 +13,7 @@ class Header extends React.Component {
                 className={styles.headerMenu}
                 mode="horizontal">
                 <MenuItem key="/home/homePage">首页</MenuItem>
+                <MenuItem key="/home/groupManage">Share群</MenuItem>
                 <MenuItem key="/account">账号</MenuItem>
             </Menu>
         )

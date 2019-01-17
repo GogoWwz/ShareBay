@@ -5,7 +5,7 @@ export default res => {
         message.warning(res.message)
         return false
     } else {
-        message.success(res.message)
+        res.message && message.success(res.message)
         return true
     }
 }
