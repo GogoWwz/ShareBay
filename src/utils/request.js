@@ -24,6 +24,7 @@ function checkStatus(response) {
  */
 export default function request(url, params, method) {
 	params = params || {}
+	params['_'] = Date.now()
 	// 基本选项配置
 	const defaultOptions = {
 		headers: {

@@ -1,6 +1,6 @@
 import React from 'react'
 import moment from 'moment'
-import { connect } from 'dva';
+import { connect } from 'dva'
 import { List } from 'antd'
 
 @connect(({ homePage }) => {
@@ -10,11 +10,10 @@ import { List } from 'antd'
 })
 class DialogList extends React.Component {
     componentDidMount() {
-        const { dispatch, userId, groupId } = this.props
+        const { dispatch, groupId } = this.props
         dispatch({
             type: 'homePage/getDialog',
             payload: {
-                userId,
                 groupId
             }
         })

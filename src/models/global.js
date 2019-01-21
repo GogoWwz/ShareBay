@@ -1,4 +1,4 @@
-import Storage from '@/utils/storage'
+import isLogin from '@/utils/logined'
 
 
 export default {
@@ -9,7 +9,7 @@ export default {
     subscriptions: {
         setup({ history }) {
             return history.listen(({ pathname, search }) => {
-                if(!Storage.get('user')) {
+                if(!isLogin(pathname)) {
                     history.replace('/user/login')
                 }
             })

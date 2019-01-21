@@ -37,13 +37,13 @@ class HomePage extends React.Component {
     addBalance = () => {
         const { balanceForm: { validateFields } } = this.refs
         const { dispatch } = this.props
+        const { selectedGroup } = this.state
         validateFields((err, values) => {
             if (!err) {
                 dispatch({
                     type: 'homePage/addBalance',
                     payload: {
-                        groupId: '5c36e11ac76d6e15987e213c',
-                        userId: '5c36e11ac76d6e15987e213b',
+                        groupId: selectedGroup,
                         balance: parseFloat(values.balance)
                     },
                     cb: this.hideModal
@@ -54,14 +54,14 @@ class HomePage extends React.Component {
     takeBalance = () => {
         const { takeBalanceForm: { validateFields } } = this.refs
         const { dispatch } = this.props
+        const { selectedGroup } = this.state
         validateFields((err, values) => {
             if (!err) {
                 const { balance, dialog } = values
                 dispatch({
                     type: 'homePage/takeBalance',
                     payload: {
-                        groupId: '5c36e11ac76d6e15987e213c',
-                        userId: '5c36e11ac76d6e15987e213b',
+                        groupId: selectedGroup,
                         balance: parseFloat(balance),
                         dialog
                     },
@@ -135,7 +135,7 @@ class HomePage extends React.Component {
     }
     render() {
         const { balance } = this.props
-        const { modalVisible, takeModalVisible, dialogVisible } = this.state
+        const { modalVisible, takeModalVisible, dialogVisible, selectedGroup } = this.state
         return (
             <div className={styles.moneyArea}>
                 <Modal
@@ -166,7 +166,7 @@ class HomePage extends React.Component {
                     closable={false}
                     visible={dialogVisible}
                     onClose={this.hideDialog}>
-                    <DialogList groupId="5c36e11ac76d6e15987e213c" userId="5c36e11ac76d6e15987e213b" />
+                    <DialogList groupId={selectedGroup} />
                 </Drawer>
                 <Card
                     title="余额"
@@ -175,18 +175,24 @@ class HomePage extends React.Component {
                         <span>{balance}</span>
                     </div>
                     <div className={styles.moneyOption}>
-                        <div key="topup" onClick={this.showModal}>
-                            <Icon type="money-collect" />
-                            <span>充值</span>
-                        </div>
+                        {
+                            selectedGroup !== 'allGroup' &&
+                            <div key="topup" onClick={this.showModal}>
+                                <Icon type="money-collect" />
+                                <span>充值</span>
+                            </div>
+                        }
                         <div key="dialog" onClick={this.showDialog}>
                             <Icon type="profile" />
                             <span>日志</span>
                         </div>
-                        <div key="takeout" onClick={this.showTakeModal}>
-                            <Icon type="export" />
-                            <span>取出</span>
-                        </div>
+                        {
+                            selectedGroup !== 'allGroup' &&
+                            <div key="takeout" onClick={this.showTakeModal}>
+                                <Icon type="export" />
+                                <span>取出</span>
+                            </div>
+                        }
                     </div>
                 </Card>
             </div>

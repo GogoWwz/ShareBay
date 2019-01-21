@@ -24,27 +24,27 @@ export default {
             }
         },
         * addBalance({ payload, cb }, { call, put }) {
-            const res = yield call(homeApi.addBalance, payload)
+            const res = yield call(homeApi.addBalance, { userId: Storage.get('user').userId, ...payload })
             if(isSuccess(res)) {
                 yield put({
                     type: 'getBalance',
-                    payload: { userId: "5c36e11ac76d6e15987e213b" }
+                    payload
                 })
                 cb && cb()
             }
         },
         * takeBalance({ payload, cb }, { call, put }) {
-            const res = yield call(homeApi.takeBalance, payload)
+            const res = yield call(homeApi.takeBalance, { userId: Storage.get('user').userId, ...payload })
             if(isSuccess(res)) {
                 yield put({
                     type: 'getBalance',
-                    payload: { userId: "5c36e11ac76d6e15987e213b" }
+                    payload
                 })
                 cb && cb()
             }
         },
         * getDialog({ payload }, { call, put }) {
-            const res = yield call(homeApi.getDialog, payload)
+            const res = yield call(homeApi.getDialog, { userId: Storage.get('user').userId, ...payload })
             if(isSuccess(res)) {
                 yield put({
                     type: 'changeData',
