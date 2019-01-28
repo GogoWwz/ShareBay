@@ -12,6 +12,8 @@ function RouterConfig({ history }) {
 				<Redirect exact from="/" to="/user" />
 				<Route path="/user" render={props => <UserLayout {...props} />} />
 				<Route path="/home" render={props => <BasicLayout {...props} />} />
+				<Route path="/group" render={props => <BasicLayout {...props} />} />
+				<Route path="/friend" render={props => <BasicLayout {...props} />} />
 			</Switch>
 		</Router>
 	);

@@ -17,7 +17,3 @@ export function takeBalance(params) {
 export function getDialog(params) {
     return request(`${BASE_URL}/getDialog`, params, 'GET');
 }
-
-export function getGroupList(params) {
-    return request(`${BASE_URL}/getGroupList`, params, 'GET')
-}

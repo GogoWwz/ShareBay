@@ -5,6 +5,9 @@ import { Row, Col } from 'antd';
 import styles from './layouts.less';
 
 import HomePage from '@/routes/HomePage/HomePage'
+import GroupManage from '@/routes/GroupManage/GroupManage'
+import FriendManage from '@/routes/FriendManage/FriendManage'
+import Account from '@/routes/Account/Account'
 import Header from '@/components/Header/Header'
 
 @connect()
@@ -19,6 +22,9 @@ class BasicLayout extends React.Component {
                     <Switch>
                         <Redirect exact from="/home" to="/home/homePage" />
                         <Route path="/home/homePage" exact component={HomePage} />
+                        <Route path="/group/groupManage" exact component={GroupManage} />
+                        <Route path="/friend/friend" exact component={FriendManage} />
+                        <Route path='/home/account' exact component={Account} />
                     </Switch>
                 </Col>
                 <Col span={24}>

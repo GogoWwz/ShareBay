@@ -1,3 +1,4 @@
+import * as groupApi from '@/services/group'
 import * as homeApi from '@/services/homePage'
 import isSuccess from '@/utils/isSuccess'
 import Storage from '@/utils/storage'
@@ -53,7 +54,7 @@ export default {
             }
         },
         * getGroupList({}, { call, put }) {
-            const res = yield call(homeApi.getGroupList, { userId: Storage.get('user').userId })
+            const res = yield call(groupApi.getGroupList, { userId: Storage.get('user').userId })
             if(isSuccess(res)) {
                 yield put({
                     type: 'changeData',
