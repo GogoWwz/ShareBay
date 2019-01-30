@@ -20,7 +20,7 @@ export default {
             if(isSuccess(res)) {
                 yield put({
                     type: 'changeData',
-                    payload: { balance: res.data.balance }
+                    payload: { balance: res.data ? res.data.balance : 0 } 
                 })
             }
         },

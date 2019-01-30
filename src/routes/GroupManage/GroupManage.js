@@ -4,9 +4,10 @@ import { Table, Button, Modal } from 'antd'
 
 import GroupAddFrom from './GroupAddForm'
 
-@connect(({ groupManage }) => {
+@connect(({ groupManage, friendManage }) => {
     return {
-        ...groupManage
+        ...groupManage,
+        ...friendManage
     }
 })
 class GroupManage extends React.Component {
@@ -20,6 +21,19 @@ class GroupManage extends React.Component {
         const { dispatch } = this.props
         dispatch({
             type: 'groupManage/getGroupList'
+        })
+    }
+    createGroup = () => {
+        const { groupForm: { validateFields } } = this.refs
+        const { dispatch } = this.props
+        validateFields((err, values) => {
+            if(!err) {
+                console.log(values)
+                dispatch({
+                    type: 'groupManage/createGroup',
+                    payload: values
+                })
+            }
         })
     }
     exitGroup = record => {
@@ -71,9 +85,10 @@ class GroupManage extends React.Component {
                     title="创建Share组"
                     visible={modalVisible}
                     onCancel={this.hideAddModal}
+                    onOk={this.createGroup}
                     okText='确认'
                     cancelText='取消'>
-                    <GroupAddFrom />
+                    <GroupAddFrom ref="groupForm" />
                 </Modal>
                 <Button 
                     style={{ margin: '20px 0' }}

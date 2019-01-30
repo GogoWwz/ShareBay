@@ -18,6 +18,14 @@ export default {
                     payload: { groupList: res.data || [] }
                 })
             }
+        }, 
+        * createGroup({ payload }, { call, put }) {
+            const res = yield call(groupApi.createGroup, { userId: Storage.get('user').userId, ...payload })
+            if(isSuccess(res)) {
+                yield put({
+                    type: 'getGroupList'
+                })
+            }
         },
         * exitGroup({ groupId }, { call, put }) {
             const res = yield call(groupApi.exitGroup, { groupId })
