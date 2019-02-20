@@ -1,8 +1,15 @@
 class Person {
-    private sex
-    public name
+    private sex: number
+    public name: string
     public constructor(name: string, sex: number) {
         this.name = name
+        this.sex = sex
+    }
+}
+
+class Man extends Person {
+    constructor(name: string) {
+        super(name, 1)
     }
 }
 
