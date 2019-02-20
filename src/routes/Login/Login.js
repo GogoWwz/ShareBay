@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'dva';
 import { Form, Icon, Input, Button, Checkbox } from 'antd';
-
 const FormItem = Form.Item
 
 @Form.create()

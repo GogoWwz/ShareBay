@@ -7,6 +7,7 @@ export default {
     alias: {
         '@': path.resolve(__dirname, 'src/')
     },
+    
     proxy: {
         '/api': {
             secure: false,

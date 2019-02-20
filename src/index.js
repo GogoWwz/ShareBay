@@ -2,6 +2,10 @@ import dva from 'dva';
 import createLoading from 'dva-loading'
 import './index.less';
 
+// import './tstest/1.变量类型'
+import './tstest/2.函数'
+// import './tstest/接口'
+
 // 1. Initialize
 const app = dva();
 
