@@ -15,7 +15,7 @@ class Man extends Person {
     constructor(name: string, sex: number, age: number) {
         super(name, sex, age)
         console.log(`名字——${this.name}`)
-        console.log(`性别——${this.sex}`)
+        // console.log(`性别——${this.sex}`)
         console.log(`年龄——${this.age}`)
     }
 }
