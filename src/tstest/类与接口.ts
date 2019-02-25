@@ -1,27 +1,27 @@
 // 类实现接口
 interface Eat {
-    say()
+    eDone()
 }
 
 interface Breath {
-    breath()
+    bDone()
 } 
 
 
 class People implements Eat, Breath {
-    say() {
+    eDone() {
         console.log("人吃了")
     }
-    breath() {
+    bDone() {
         console.log("人呼吸")
     }
 }
 
 class Animal implements Eat, Breath {
-    say() {
+    eDone() {
         console.log("动物吃了")
     }
-    breath() {
+    bDone() {
         console.log("动物呼吸")
     }
 }
@@ -29,8 +29,12 @@ class Animal implements Eat, Breath {
 let p = new People()
 let a = new Animal()
 
-p.say(); p.breath();
-a.say(); a.breath();
+p.eDone(); p.bDone();
+a.eDone(); a.bDone();
 
 
 // 接口继承接口
+interface EatLot extends Eat {
+    eLDone()
+    eDone()  
+}
