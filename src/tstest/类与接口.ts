@@ -38,3 +38,4 @@ interface EatLot extends Eat {
     eLDone()
     eDone()  
 }
+

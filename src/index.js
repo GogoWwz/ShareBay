@@ -9,7 +9,8 @@ import './index.less';
 // import './tstest/类型别名'  
 // import './tstest/字符串字面常量'  
 // import './tstest/类'  
-import './tstest/类与接口'
+// import './tstest/类与接口'
+import './tstest/泛型'
 
 // 1. Initialize
 const app = dva();
