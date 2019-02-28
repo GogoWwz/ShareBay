@@ -8,7 +8,7 @@ import HomePage from '@/routes/HomePage/HomePage'
 import GroupManage from '@/routes/GroupManage/GroupManage'
 import FriendManage from '@/routes/FriendManage/FriendManage'
 import Account from '@/routes/Account/Account'
-import Header from '@/components/Header/Header'
+import Header from '@/components/Header'
 
 @connect(({ loading }) => {
     return {

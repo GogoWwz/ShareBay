@@ -4,7 +4,7 @@ import { connect } from 'dva'
 import styles from './style.less'
 import BalanceForm from './BalaceForm'
 import TakeBalanceForm from './TakeBalanceForm'
-import DialogList from '@/components/DialogList/DialogList'
+import DialogList from '@/components/DialogList'
 
 const Option = Select.Option
 
